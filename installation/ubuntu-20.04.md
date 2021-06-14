@@ -161,6 +161,24 @@ Deploy calico networking model:
 curl https://docs.projectcalico.org/manifests/calico.yaml -O
 kubectl apply -f calico.yaml
 ```
+and finally to join worker nodes to cluster:
+```bash
+kubeadm token create --print-join-command
+```
+
+### On worker nodes:
+Join the cluster
+Use the output from kubeadm token create command in previous step from the master server and run here.
+
+### Verifying the cluster (On the master node)
+Get Nodes status
+```bash
+kubectl get nodes
+```
+Get component status
+```bash
+kubectl get cs
+```
 
 
 
